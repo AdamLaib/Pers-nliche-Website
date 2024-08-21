@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang='de'>
+<head>
+  <meta charset='utf-8'>
+  <title>Gästebuch</title>
+  <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+<header>
+  <nav>
+    <ul>
+      <img src='../img/WebsiteLogo_Adam.jpg' width='61' height='50'>
+      <li><a href='index.html'>Startseite </a></li>
+      <li><a href="Schulischer_Werdegang.html">Schulischer Werdegang</a></li>
+      <li><a href="Hobbys.html">Hobbys</a></li>
+      <li><a href="Gaestebuch.html">Gaestebuch</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+<div class="guestbook-container">
+  <h2 class="guestbook-title">Gästebuch</h2>
+
+  <form class="guestbook-form" action="#" method="post">
+    <input class="guestbook-input" type="text" name="firstName" placeholder="Vorname" required>
+    <input class="guestbook-input" type="text" name="lastName" placeholder="Nachname" required>
+    <textarea class="guestbook-textarea" name="comment" placeholder="Kommentar" required></textarea>
+    <button class="guestbook-submit" type="submit">Eintragen</button>
+  </form>
+</div>
+
+<div class="guestbook-entries">
+</div>
+
+<script>
+    document.querySelector('.guestbook-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var firstName = document.querySelector('input[name="firstName"]').value.trim();
+        var lastName = document.querySelector('input[name="lastName"]').value.trim();
+        var comment = document.querySelector('textarea[name="comment"]').value.trim();
+
+        if (!firstName || !lastName || !comment) {
+            alert("Bitte alle Felder ausfüllen!");
+            return;
+        }
+
+        var entry = document.createElement('div');
+        entry.classList.add('guestbook-entry');
+
+        var nameElement = document.createElement('p');
+        nameElement.classList.add('guestbook-entry-name');
+        nameElement.textContent = firstName + ' ' + lastName;
+
+        var commentElement = document.createElement('p');
+        commentElement.classList.add('guestbook-entry-comment');
+        commentElement.textContent = comment;
+
+        entry.appendChild(nameElement);
+        entry.appendChild(commentElement);
+
+        document.querySelector('.guestbook-entries').appendChild(entry);
+
+        document.querySelector('.guestbook-form').reset();
+        alert("Kommentar erfolgreich hinzugefügt!");
+    });
+
+</script>
+
+<div class="footer">
+  <p>
+    Follow me on social media:
+    <a href="https://twitter.com/explore">Twitter</a>,
+    <a href="https://www.facebook.com/zuck">Facebook</a>,
+    <a href="https://www.instagram.com/cristiano/">Instagram</a>
+    |
+    <a href="Datenschutzerklaerung.html">Datenschutzerklärung und Impressum</a>
+    |
+    <a href="Disclaimer.html">Disclaimer</a>
+  </p>
+</div>
+
+</body>
+<footer>
+</footer>
+</html>
